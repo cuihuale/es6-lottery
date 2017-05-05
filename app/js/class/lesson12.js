@@ -1,3 +1,4 @@
+/*******************类与对象**************************/
 {
   // 基本定义和生成实例
   class Parent{
@@ -6,7 +7,7 @@
     }
   }
   let v_parent=new Parent('v');
-  console.log('构造函数和实例',v_parent);
+  console.log('构造函数和实例',v_parent); // 构造函数和实例 Parent {name: "v"}
 }
 
 {
@@ -21,7 +22,7 @@
 
   }
 
-  console.log('继承',new Child());
+  console.log('继承',new Child()); // 继承 Child {name: "mukewang"}
 }
 
 {
@@ -34,12 +35,12 @@
 
   class Child extends Parent{
     constructor(name='child'){
-      super(name);
+      super(name); //调用父类的方法，用super()，一定要放在第一行
       this.type='child';
     }
   }
 
-  console.log('继承传递参数',new Child('hello'));
+  console.log('继承传递参数',new Child('hello')); //继承传递参数 _Child {name: "hello", type: "child"}
 }
 
 {
@@ -48,7 +49,7 @@
     constructor(name='mukewang'){
       this.name=name;
     }
-
+    // 注意这里longName是属性，不是一个方法
     get longName(){
       return 'mk'+this.name
     }
@@ -59,9 +60,9 @@
   }
 
   let v=new Parent();
-  console.log('getter',v.longName);
+  console.log('getter',v.longName); // getter mkmukewang
   v.longName='hello';
-  console.log('setter',v.longName);
+  console.log('setter',v.longName); // setter mkhello
 }
 
 {
@@ -70,14 +71,11 @@
     constructor(name='mukewang'){
       this.name=name;
     }
-
     static tell(){
       console.log('tell');
     }
   }
-
-  Parent.tell();
-
+  Parent.tell(); // tell
 }
 
 {
@@ -91,10 +89,6 @@
       console.log('tell');
     }
   }
-
-  Parent.type='test';
-
-  console.log('静态属性',Parent.type);
-
-
+  Parent.type='test'; //  定义静态属性
+  console.log('静态属性',Parent.type); // 静态属性 test
 }
